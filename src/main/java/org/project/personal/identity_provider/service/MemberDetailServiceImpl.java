@@ -1,7 +1,7 @@
 package org.project.personal.identity_provider.service;
 
-import org.project.personal.identity_provider.dto.MemberDetailModifyRequest;
 import org.project.personal.identity_provider.dto.request.JoinRequest;
+import org.project.personal.identity_provider.dto.request.MemberDetailModifyRequest;
 import org.project.personal.identity_provider.entity.Member;
 import org.project.personal.identity_provider.entity.MemberDetail;
 import org.project.personal.identity_provider.repository.MemberDetailRepository;

@@ -4,6 +4,8 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -23,6 +25,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "member_details")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 public class MemberDetail {
 
@@ -44,6 +47,7 @@ public class MemberDetail {
     @Column(name = "nick_name")
     private String nickName;
 
+    @CreatedDate
     @Column(name = "joined_at")
     private LocalDateTime joinedAt;
 

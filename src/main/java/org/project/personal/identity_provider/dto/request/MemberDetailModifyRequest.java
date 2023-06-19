@@ -1,4 +1,4 @@
-package org.project.personal.identity_provider.dto;
+package org.project.personal.identity_provider.dto.request;
 
 import lombok.Getter;
 

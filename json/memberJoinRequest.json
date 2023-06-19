@@ -1,0 +1,7 @@
+{
+  "email" : "test@mail.com",
+  "memberName" : "test_Member_name",
+  "password" : "test_Password",
+  "phoneNumber" : "010-0123-4567",
+  "nickName" : "test_nickName"
+}

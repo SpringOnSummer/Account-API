@@ -6,19 +6,16 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.project.personal.identity_provider.dto.MemberDetailModifyRequest;
+import org.project.personal.identity_provider.dto.request.MemberDetailModifyRequest;
 import org.project.personal.identity_provider.dto.request.JoinRequest;
 import org.project.personal.identity_provider.entity.Member;
 import org.project.personal.identity_provider.entity.MemberDetail;
 import org.project.personal.identity_provider.repository.MemberDetailRepository;
 import org.project.personal.identity_provider.utils.MemberTestUtils;
 
-import java.util.NoSuchElementException;
-
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
