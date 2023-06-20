@@ -1,9 +1,12 @@
 package org.project.personal.accountapi.adaptor.impl;
 
 import org.project.personal.accountapi.adaptor.MemberAdaptor;
+import org.project.personal.accountapi.domain.MemberWithDetail;
 import org.project.personal.accountapi.dto.request.JoinRequest;
 import org.project.personal.accountapi.dto.request.MemberEmail;
+import org.project.personal.accountapi.dto.response.MemberDataWithDetails;
 import org.project.personal.accountapi.entity.Member;
+import org.project.personal.accountapi.entity.MemberDetail;
 import org.project.personal.accountapi.repository.MemberRepository;
 import org.project.personal.accountapi.request.MemberPasswordModifyRequest;
 import org.project.personal.accountapi.utils.MembersEmailUtils;
@@ -55,5 +58,25 @@ public class MemberAdaptorImpl implements MemberAdaptor {
     @Override
     public void deleteMemberById(Long memberId) {
         memberRepository.deleteById(memberId);
+    }
+
+    @Override
+    public Member searchMemberByEmail(String targetEmail) {
+        return memberRepository.findMemberEntityByMemberEmail(targetEmail).orElseThrow();
+    }
+
+    @Override
+    public MemberDetail searchMemberDetailByEmail(String targetEmail) {
+        return memberRepository.findMemberDetailEntityByMemberEmail(targetEmail).orElseThrow();
+    }
+
+    @Override
+    public MemberDataWithDetails searchMemberDataByEmail(String targetEmail) {
+        return memberRepository.findMemberInformationByEmail(targetEmail).orElseThrow();
+    }
+
+    @Override
+    public MemberWithDetail searchMemberWithDetailByEmail(String targetEmail) {
+        return memberRepository.findMemberWithDetailByEmail(targetEmail).orElseThrow();
     }
 }
