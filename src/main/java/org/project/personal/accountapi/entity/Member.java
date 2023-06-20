@@ -32,7 +32,7 @@ public class Member {
     private Long id;
 
     @Column(name = "member_name")
-    private String memberName;
+    private String name;
 
     @Column(name = "email_local")
     private String emailLocal;
@@ -45,14 +45,14 @@ public class Member {
 
     @Builder
     public Member(String memberName, String emailLocal, String emailDomain, String password) {
-        this.memberName = memberName;
+        this.name = memberName;
         this.emailLocal = emailLocal;
         this.emailDomain = emailDomain;
         this.password = password;
     }
 
     public void modifyName(String memberName){
-        this.memberName = memberName;
+        this.name = memberName;
     }
 
     public void changePassword(String password){

@@ -5,8 +5,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberDetailRepository extends JpaRepository<MemberDetail, Long> {
 
-    MemberDetail findMemberDetailByMemberId(Long memberId);
-
-    void deleteMemberDetailByMemberId(Long memberId);
-
 }
