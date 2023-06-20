@@ -10,22 +10,17 @@ import org.project.personal.accountapi.dto.request.JoinRequest;
 import org.project.personal.accountapi.entity.Member;
 import org.project.personal.accountapi.entity.MemberDetail;
 import org.project.personal.accountapi.repository.MemberDetailRepository;
-import org.project.personal.accountapi.service.MemberDetailServiceImpl;
-import org.project.personal.accountapi.service.MemberService;
 import org.project.personal.accountapi.request.MemberDetailModifyRequest;
 import org.project.personal.accountapi.utils.MemberTestUtils;
 
-import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.not;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MemberDetailServiceTest {
-
-    @Mock
-    MemberService memberService;
 
     @Mock
     MemberDetailRepository memberDetailRepository;
@@ -46,7 +41,6 @@ class MemberDetailServiceTest {
     void registerMemberDetail() {
         JoinRequest joinRequest = MemberTestUtils.getJoinRequest();
 
-        given(memberService.registerMember(joinRequest)).willReturn(member);
         given(memberDetailRepository.save(any(MemberDetail.class))).willReturn(memberDetail);
 
         MemberDetail actual = memberDetailService.registerMemberDetail(joinRequest);

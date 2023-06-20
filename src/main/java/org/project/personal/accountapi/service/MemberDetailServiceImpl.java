@@ -1,7 +1,6 @@
 package org.project.personal.accountapi.service;
 
 import org.project.personal.accountapi.dto.request.JoinRequest;
-import org.project.personal.accountapi.entity.Member;
 import org.project.personal.accountapi.entity.MemberDetail;
 import org.project.personal.accountapi.repository.MemberDetailRepository;
 import org.project.personal.accountapi.request.MemberDetailModifyRequest;
@@ -12,11 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class MemberDetailServiceImpl implements MemberDetailService{
 
-    private final MemberService memberService;
     private final MemberDetailRepository memberDetailRepository;
 
-    public MemberDetailServiceImpl(MemberService memberService, MemberDetailRepository memberDetailRepository) {
-        this.memberService = memberService;
+    public MemberDetailServiceImpl(MemberDetailRepository memberDetailRepository) {
         this.memberDetailRepository = memberDetailRepository;
     }
 
@@ -24,10 +21,8 @@ public class MemberDetailServiceImpl implements MemberDetailService{
     @Override
     public MemberDetail registerMemberDetail(JoinRequest joinRequest) {
 
-        Member member = memberService.registerMember(joinRequest);
 
         MemberDetail memberDetail = MemberDetail.builder()
-                .memberId(member.getId())
                 .phoneNumber(joinRequest.getPhoneNumber())
                 .nickName(joinRequest.getNickName())
                 .build();
