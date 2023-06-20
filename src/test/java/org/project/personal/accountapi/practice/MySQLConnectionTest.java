@@ -1,4 +1,4 @@
-package org.project.personal.accountapi.repository;
+package org.project.personal.accountapi.practice;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
@@ -27,7 +27,6 @@ import static org.hamcrest.CoreMatchers.*;
  * 7. 사용할 JPA Repository 범위 설정
  */
 
-@Disabled
 @ActiveProfiles("mysql")
 @ContextHierarchy(
         @ContextConfiguration(classes =
@@ -43,7 +42,10 @@ class MySQLConnectionTest {
     @Autowired
     TestEntityManager entityManager;
 
-    @Test
+    /**
+     *  실습용 테스트이므로 확인시에만 @Test 활성
+     */
+//    @Test
     @DisplayName("Spring Datasource 및 MySQL 설정 정보 확인")
     void testConnection() {
 

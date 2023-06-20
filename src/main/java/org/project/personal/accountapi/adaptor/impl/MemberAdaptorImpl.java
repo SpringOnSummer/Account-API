@@ -1,21 +1,20 @@
-package org.project.personal.accountapi.service;
+package org.project.personal.accountapi.adaptor.impl;
 
+import org.project.personal.accountapi.adaptor.MemberAdaptor;
 import org.project.personal.accountapi.dto.request.JoinRequest;
 import org.project.personal.accountapi.dto.request.MemberEmail;
 import org.project.personal.accountapi.entity.Member;
 import org.project.personal.accountapi.repository.MemberRepository;
 import org.project.personal.accountapi.request.MemberPasswordModifyRequest;
 import org.project.personal.accountapi.utils.MembersEmailUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Component;
 
-@Transactional
-@Service
-public class MemberServiceImpl implements MemberService {
+@Component
+public class MemberAdaptorImpl implements MemberAdaptor {
 
     private final MemberRepository memberRepository;
 
-    public MemberServiceImpl(MemberRepository memberRepository) {
+    public MemberAdaptorImpl(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
 
@@ -37,14 +36,14 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public Member searchMemberByMemberId(Long id) {
-        return memberRepository.findById(id).orElseThrow();
+    public Member searchMemberByMemberId(Long memberId) {
+        return memberRepository.findById(memberId).orElseThrow();
     }
 
     @Override
-    public Member modifyPassword(Long id, MemberPasswordModifyRequest memberModifyRequest) {
+    public Member modifyPassword(Long memberId, MemberPasswordModifyRequest memberModifyRequest) {
 
-        Member member = memberRepository.findById(id).orElseThrow();
+        Member member = memberRepository.findById(memberId).orElseThrow();
 
         if (memberModifyRequest.getCurrentPassword().matches(member.getPassword())) {
             member.changePassword(memberModifyRequest.getResetPassword());
@@ -54,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public void deleteMember(Long id) {
-        memberRepository.deleteById(id);
+    public void deleteMemberById(Long memberId) {
+        memberRepository.deleteById(memberId);
     }
 }

@@ -61,7 +61,7 @@ class MemberRepositoryTest {
 
         Optional<Member> actual = memberRepository.findById(before.getId());
 
-        actual.ifPresent(member -> assertThat(member.getMemberName(), not(equalTo(before.getMemberName()))));
+        actual.ifPresent(member -> assertThat(member.getName(), not(equalTo(before.getName()))));
 
     }
 
